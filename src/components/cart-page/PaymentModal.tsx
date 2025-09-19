@@ -25,7 +25,7 @@ const PaymentPage: React.FC<PaymentModalProps> = ({ handlePayment, cartData }) =
         setSelectedPaymentMethod(event.target.value);
     };
 
-    const handleDownload = async (productId: number) => {
+    const handleDownload = async (productId: string) => {
         try {
             const product = await getProductById(productId);
 

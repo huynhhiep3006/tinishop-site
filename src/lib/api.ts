@@ -14,7 +14,7 @@ export async function getNewArrivals(page = 1, perPage = 10, key = ""): Promise<
   const totalPages = parseInt(res.headers.get("X-WP-TotalPages") || "1");
   // Map WooCommerce product -> Product[]
   const data = products.map((product: any) => ({
-    id: product.id,
+    id: product.slug,
     title: product.name,
     srcUrl: product.images?.[0]?.src || "/images/placeholder.png",
     gallery: product.images?.map((img: any) => img.src) || ["/images/placeholder.png"],

@@ -4,7 +4,7 @@ import React from "react";
 const brandsData: { id: string; srcUrl: string }[] = [
   {
     id: "Cozy",
-    srcUrl: "/icons/cozy.png",
+    srcUrl: "/icons/Cozy.png",
   },
   {
     id: "Christmas",

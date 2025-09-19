@@ -9,27 +9,32 @@ import { getProductById } from '@/lib/getproduct';
 import { getRelatedByIds } from '@/lib/related';
 import { useEffect, useState } from 'react';
 import he from 'he';
+
 export default function ProductPage({
   params,
 }: {
   params: { slug: string[] };
 }) {
   const [productfull, setProduct] = useState<ProductFull | null>(null);
-  const [loading, setLoading] = useState(true); // trạng thái loading
-  const [error, setError] = useState<string | null>(null); // trạng thái lỗi
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
+ 
   useEffect(() => {
-    const id = Number(params.slug?.[0]); // Lấy ID từ slug
+    const id = params.slug?.[0]; // Lấy ID từ slug
     if (!id) {
       setError("ID không hợp lệ.");
       return;
     }
-
+    
     getProductById(id)
       .then(data => {
-        setProduct(data);
+        if (Array.isArray(data) && data.length > 0) {
+          setProduct(data[0]); // ✅ Chỉ lấy phần tử đầu tiên
+        } else {
+          setError("Không tìm thấy sản phẩm.");
+        }
         setLoading(false);
-        console.log("✅ product data:", data);
       })
       .catch(err => {
         setError("Không thể tải dữ liệu sản phẩm.");
@@ -37,6 +42,7 @@ export default function ProductPage({
         setLoading(false);
       });
   }, [params.slug]);
+
   useEffect(() => {
     if (!productfull || !productfull.related_ids?.length) return;
 
@@ -46,9 +52,11 @@ export default function ProductPage({
         console.error("❌ Lỗi khi load sản phẩm liên quan:", err);
       });
   }, [productfull]);
+
   if (loading) return <p className="text-center py-10">⏳ Đang tải dữ liệu...</p>;
   if (error || !productfull) return <p className="text-center py-10 text-red-500">{error ?? "Không tìm thấy sản phẩm."}</p>;
 
+  console.log("✅ productfull data:", productfull);
 
   return (
     <main>

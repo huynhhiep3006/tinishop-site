@@ -29,7 +29,7 @@ async function fetchProductsByIds(ids: number[]): Promise<Product[]> {
   const products = await res.json();
 
   return products.map((product: any) => ({
-    id: product.id,
+    id: product.slug,
     title: product.name,
     srcUrl: product.images?.[0]?.src || "/images/placeholder.png",
     gallery:
@@ -69,7 +69,7 @@ export async function getRelated(): Promise<Product[]> {
       const relatedProducts = await fetchProductsByIds(relatedIds);
 
       return {
-        id: product.id,
+        id: product.slug,
         title: product.name,
         srcUrl: product.images?.[0]?.src || "/images/placeholder.png",
         gallery:
@@ -109,7 +109,7 @@ export async function getRelatedByIds(relatedIds: number[]): Promise<Product[]> 
   const products = await res.json();
 
   const data: Product[] = products.map((product: any) => ({
-    id: product.id,
+    id: product.slug,
     title: product.name,
     srcUrl: product.images?.[0]?.src || "/images/placeholder.png",
     gallery:
