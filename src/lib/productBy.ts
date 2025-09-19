@@ -15,7 +15,7 @@ export async function getProductBy(condition: string): Promise<Product[]> {
 
   // Map WooCommerce product -> Product[]
   const data = products.map((product: any) => ({
-    id: product.id,
+    id: product.slug,
     title: product.name,
     srcUrl: product.images?.[0]?.src || "/images/placeholder.png",
     gallery: product.images?.map((img: any) => img.src) || ["/images/placeholder.png"],
