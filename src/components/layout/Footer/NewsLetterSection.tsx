@@ -1,16 +1,16 @@
 import { Button } from "@/components/ui/button";
 import InputGroup from "@/components/ui/input-group";
 import { cn } from "@/lib/utils";
-import { integralCF } from "@/styles/fonts";
+import { josefinsans } from "@/styles/fonts";
 import Image from "next/image";
 import React from "react";
 
 const NewsLetterSection = () => {
   return (
-    <div className="relative grid grid-cols-1 md:grid-cols-2 py-9 md:py-11 px-6 md:px-16 max-w-frame mx-auto bg-black rounded-[20px]">
+    <div className="relative grid grid-cols-1 md:grid-cols-2 py-9 md:py-11 px-6 md:px-16 max-w-frame mx-auto bg-pink rounded-[20px]">
       <p
         className={cn([
-          integralCF.className,
+          josefinsans.className,
           "font-bold text-[32px] md:text-[40px] text-white mb-9 md:mb-0",
         ])}
       >

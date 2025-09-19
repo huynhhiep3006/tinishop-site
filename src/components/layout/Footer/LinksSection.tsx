@@ -2,7 +2,7 @@ import React from "react";
 import { FooterLinks } from "./footer.types";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-
+import { ACCOUNT_URL } from '@/lib/constants';
 const footerLinksData: FooterLinks[] = [
   {
     id: 1,
@@ -11,23 +11,19 @@ const footerLinksData: FooterLinks[] = [
       {
         id: 11,
         label: "about",
-        url: "#",
+        url: "/About",
       },
       {
         id: 12,
         label: "features",
-        url: "#",
+        url: "/Features",
       },
       {
         id: 13,
-        label: "works",
-        url: "#",
+        label: "Mission",
+        url: "/Mission",
       },
-      {
-        id: 14,
-        label: "career",
-        url: "#",
-      },
+      
     ],
   },
   {
@@ -36,23 +32,23 @@ const footerLinksData: FooterLinks[] = [
     children: [
       {
         id: 21,
-        label: "customer support",
-        url: "#",
+        label: "Customer Support",
+        url: "/CustomerSupport",
       },
       {
         id: 22,
-        label: "delivery details",
-        url: "#",
+        label: "Downloads & Access",
+        url: "DownloadsAccess",
       },
       {
         id: 23,
-        label: "terms & conditions",
-        url: "#",
+        label: "Shipping & Delivery",
+        url: "ShippingDelivery",
       },
       {
         id: 24,
-        label: "privacy policy",
-        url: "#",
+        label: "Payment Methods",
+        url: "HelpPayment",
       },
     ],
   },
@@ -62,22 +58,22 @@ const footerLinksData: FooterLinks[] = [
     children: [
       {
         id: 31,
-        label: "account",
-        url: "#",
+        label: "Digital Downloads",
+        url: "DigitalDownloads",
       },
       {
         id: 32,
-        label: "manage deliveries",
+        label: "Printing",
         url: "#",
       },
       {
         id: 33,
-        label: "orders",
+        label: "Orders & Payments",
         url: "#",
       },
       {
         id: 34,
-        label: "payments",
+        label: "Technical & Apps",
         url: "#",
       },
     ],

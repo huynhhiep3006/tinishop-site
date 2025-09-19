@@ -3,7 +3,7 @@ import Rating from "../ui/Rating";
 import Image from "next/image";
 import Link from "next/link";
 import { Product } from "@/types/product.types";
-
+import he from 'he';
 type ProductCardProps = {
   data: Product;
 };
@@ -11,10 +11,10 @@ type ProductCardProps = {
 const ProductCard = ({ data }: ProductCardProps) => {
   return (
     <Link
-      href={`/shop/product/${data.id}/${data.title.split(" ").join("-")}`}
+      href={`/shop/product/${data.id}`}
       className="flex flex-col items-start aspect-auto"
     >
-      <div className="bg-[#F0EEED] rounded-[13px] lg:rounded-[20px] w-full lg:max-w-[295px] aspect-square mb-2.5 xl:mb-4 overflow-hidden">
+      <div className="bg-[#FFE6F0] rounded-[13px] lg:rounded-[20px] w-full lg:max-w-[295px] aspect-square mb-2.5 xl:mb-4 overflow-hidden">
         <Image
           src={data.srcUrl}
           width={295}
@@ -24,7 +24,7 @@ const ProductCard = ({ data }: ProductCardProps) => {
           priority
         />
       </div>
-      <strong className="text-black xl:text-xl">{data.title}</strong>
+      <strong className="text-black xl:text-xl">{he.decode(data.title)}</strong>
       <div className="flex items-end mb-1 xl:mb-2">
         <Rating
           initialValue={data.rating}
@@ -60,11 +60,7 @@ const ProductCard = ({ data }: ProductCardProps) => {
             ${data.price}
           </span>
         )}
-        {data.discount.amount > 0 && (
-          <span className="font-bold text-black/40 line-through text-xl xl:text-2xl">
-            ${data.price}
-          </span>
-        )}
+      
         {data.discount.percentage > 0 ? (
           <span className="font-medium text-[10px] xl:text-xs py-1.5 px-3.5 rounded-full bg-[#FF3333]/10 text-[#FF3333]">
             {`-${data.discount.percentage}%`}

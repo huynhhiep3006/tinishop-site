@@ -1,5 +1,6 @@
+"use client"
 import { cn } from "@/lib/utils";
-import { integralCF } from "@/styles/fonts";
+import { josefinsans } from "@/styles/fonts";
 import Link from "next/link";
 import React from "react";
 import { NavMenu } from "../navbar.types";
@@ -13,7 +14,9 @@ import Image from "next/image";
 import InputGroup from "@/components/ui/input-group";
 import ResTopNavbar from "./ResTopNavbar";
 import CartBtn from "./CartBtn";
-
+import { ACCOUNT_URL, SHOP_NAME } from '@/lib/constants';
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 const data: NavMenu = [
   {
     id: 1,
@@ -22,30 +25,31 @@ const data: NavMenu = [
     children: [
       {
         id: 11,
-        label: "Men's clothes",
+        label: "Cozy Coloring Book",
         url: "/shop#men-clothes",
         description: "In attractive and spectacular colors and designs",
       },
       {
         id: 12,
-        label: "Women's clothes",
+        label: "Kids Coloring Book",
         url: "/shop#women-clothes",
         description: "Ladies, your style and tastes are important to us",
       },
       {
         id: 13,
-        label: "Kids clothes",
+        label: "Mandala Coloring Book",
         url: "/shop#kids-clothes",
         description: "For all ages, with happy and beautiful colors",
       },
       {
         id: 14,
-        label: "Bags and Shoes",
+        label: "Seasonal & Holiday Coloring",
         url: "/shop#bag-shoes",
         description: "Suitable for men, women and all tastes and styles",
       },
     ],
   },
+
   {
     id: 2,
     type: "MenuItem",
@@ -57,21 +61,22 @@ const data: NavMenu = [
     id: 3,
     type: "MenuItem",
     label: "New Arrivals",
-    url: "/shop#new-arrivals",
+    url: "/shop?category=32",
     children: [],
   },
   {
     id: 4,
     type: "MenuItem",
-    label: "Brands",
-    url: "/shop#brands",
+    label: "Tips & Ideas",
+    url: "/Tips",
     children: [],
   },
 ];
 
 const TopNavbar = () => {
+
   return (
-    <nav className="sticky top-0 bg-white z-20">
+    <nav className="sticky top-0 bg-white z-max">
       <div className="flex relative max-w-frame mx-auto items-center justify-between md:justify-start py-5 md:py-6 px-4 xl:px-0">
         <div className="flex items-center">
           <div className="block md:hidden mr-4">
@@ -80,11 +85,11 @@ const TopNavbar = () => {
           <Link
             href="/"
             className={cn([
-              integralCF.className,
+              josefinsans.className,
               "text-2xl lg:text-[32px] mb-2 mr-3 lg:mr-10",
             ])}
           >
-            SHOP.CO
+            {SHOP_NAME}
           </Link>
         </div>
         <NavigationMenu className="hidden md:flex mr-2 lg:mr-7">
@@ -101,24 +106,28 @@ const TopNavbar = () => {
             ))}
           </NavigationMenuList>
         </NavigationMenu>
-        <InputGroup className="hidden md:flex bg-[#F0F0F0] mr-3 lg:mr-10">
-          <InputGroup.Text>
-            <Image
-              priority
-              src="/icons/search.svg"
-              height={20}
-              width={20}
-              alt="search"
-              className="min-w-5 min-h-5"
+        <form action="/shop" method="GET" className="relative">
+          <InputGroup className="hidden md:flex bg-[#F0F0F0] mr-3 lg:mr-10">
+            <InputGroup.Text>
+              <Image
+                priority
+                src="/icons/search.svg"
+                height={20}
+                width={20}
+                alt="search"
+                className="min-w-5 min-h-5"
+              />
+            </InputGroup.Text>
+            <InputGroup.Input
+              type="search"
+              name="search"
+              placeholder="Search for products..."
+              className="bg-transparent placeholder:text-black/40"
+              required
             />
-          </InputGroup.Text>
-          <InputGroup.Input
-            type="search"
-            name="search"
-            placeholder="Search for products..."
-            className="bg-transparent placeholder:text-black/40"
-          />
-        </InputGroup>
+          </InputGroup>
+        </form>
+
         <div className="flex items-center">
           <Link href="/search" className="block md:hidden mr-[14px] p-1">
             <Image
@@ -131,7 +140,7 @@ const TopNavbar = () => {
             />
           </Link>
           <CartBtn />
-          <Link href="/#signin" className="p-1">
+          <Link href={ACCOUNT_URL} className="p-1">
             <Image
               priority
               src="/icons/user.svg"

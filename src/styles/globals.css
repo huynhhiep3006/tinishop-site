@@ -51,7 +51,7 @@
     --radius: 0.5rem;
   }
   .dark {
-    --background: 222.2 84% 4.9%;
+    --background: 340 100% 85%;
     --foreground: 210 40% 98%;
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
@@ -76,6 +76,21 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
+  .bg-pink{
+    background: linear-gradient(145deg, rgb(255,140,190) 0%, rgb(255,180,210) 100%);
+  }
+  .bg-cream{
+    background: linear-gradient(145deg, #FFE6F0 0%, #FFF9E6 100%);
+  }
+  .top-100{
+        top: 7rem;
+  }
+  .width-100{
+    width: 100%;
+  }
+  .z-max {
+    z-index: 2000000;
+}
 }
 
 @layer base {

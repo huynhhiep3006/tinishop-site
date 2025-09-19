@@ -24,7 +24,7 @@ const ProductCard = ({ data }: ProductCardProps) => {
   return (
     <div className="flex items-start space-x-4">
       <Link
-        href={`/shop/product/${data.id}/${data.name.split(" ").join("-")}`}
+        href={`/shop/product/${data.id}`}
         className="bg-[#F0EEED] rounded-lg w-full min-w-[100px] max-w-[100px] sm:max-w-[124px] aspect-square overflow-hidden"
       >
         <Image
@@ -39,7 +39,7 @@ const ProductCard = ({ data }: ProductCardProps) => {
       <div className="flex w-full self-stretch flex-col">
         <div className="flex items-center justify-between">
           <Link
-            href={`/shop/product/${data.id}/${data.name.split(" ").join("-")}`}
+            href={`/shop/product/${data.id}`}
             className="text-black font-bold text-base xl:text-xl"
           >
             {data.name}
@@ -62,16 +62,13 @@ const ProductCard = ({ data }: ProductCardProps) => {
           </Button>
         </div>
         <div className="-mt-1">
-          <span className="text-black text-xs md:text-sm mr-1">Size:</span>
+          <span className="text-black text-xs md:text-sm mr-1">Type:</span>
           <span className="text-black/60 text-xs md:text-sm">
             {data.attributes[0]}
           </span>
         </div>
         <div className="mb-auto -mt-1.5">
-          <span className="text-black text-xs md:text-sm mr-1">Color:</span>
-          <span className="text-black/60 text-xs md:text-sm">
-            {data.attributes[1]}
-          </span>
+          <span className="text-black text-xs md:text-sm mr-1">You will receive a PDF download link if you choose the Digital option</span>
         </div>
         <div className="flex items-center flex-wrap justify-between">
           <div className="flex items-center space-x-[5px] xl:space-x-2.5">
@@ -87,17 +84,17 @@ const ProductCard = ({ data }: ProductCardProps) => {
               </span>
             ) : (
               <span className="font-bold text-black text-xl xl:text-2xl">
-                ${data.price}
+                ${data.attributes[0] == "Physical Books" ? Number(data.price)*3 : Number(data.price)}
               </span>
             )}
             {data.discount.percentage > 0 && (
               <span className="font-bold text-black/40 line-through text-xl xl:text-2xl">
-                ${data.price}
+                ${data.attributes[0] == "Physical Books" ? Number(data.price)*3 : Number(data.price)}
               </span>
             )}
             {data.discount.amount > 0 && (
               <span className="font-bold text-black/40 line-through text-xl xl:text-2xl">
-                ${data.price}
+                ${data.attributes[0] == "Physical Books" ? Number(data.price)*3 : Number(data.price)}
               </span>
             )}
             {data.discount.percentage > 0 ? (

@@ -7,20 +7,20 @@ export type SpecItem = {
 
 const specsData: SpecItem[] = [
   {
-    label: " Material composition",
-    value: "100% Cotton",
+    label: "Paperback",
+    value: "Over 40 pages",
   },
   {
-    label: "Care instructions",
-    value: "Machine wash warm, tumble dry",
+    label: "Publisher",
+    value: "Design Originals; First Edition (12 July 2022)",
   },
   {
-    label: "Fit type",
-    value: "Classic Fit",
+    label: "Language",
+    value: "English",
   },
   {
-    label: "Pattern",
-    value: "Solid",
+    label: "Age",
+    value: "+3",
   },
 ];
 

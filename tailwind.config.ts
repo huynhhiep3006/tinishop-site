@@ -10,6 +10,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
+        josefinsans: ["var(--font-josefin)"],
         integralCF: ["var(--font-integralCF)"],
         satoshi: ["var(--font-satoshi)"],
       },

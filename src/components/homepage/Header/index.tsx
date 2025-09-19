@@ -1,7 +1,7 @@
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
-import { integralCF } from "@/styles/fonts";
+import { josefinsans } from "@/styles/fonts";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -18,11 +18,11 @@ const Header = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className={cn([
-              integralCF.className,
+              josefinsans.className,
               "text-4xl lg:text-[64px] lg:leading-[64px] mb-5 lg:mb-8",
             ])}
           >
-            FIND CLOTHES THAT MATCHES YOUR STYLE
+            LOST IN A WORLD OF COLORS 
           </motion.h2>
           <motion.p
             initial={{ y: "100px", opacity: 0 }}
@@ -31,9 +31,7 @@ const Header = () => {
             transition={{ delay: 0.5, duration: 0.6 }}
             className="text-black/60 text-sm lg:text-base mb-6 lg:mb-8 max-w-[545px]"
           >
-            Browse through our diverse range of meticulously crafted garments,
-            designed to bring out your individuality and cater to your sense of
-            style.
+            ✨ "Immerse yourself in a world of colors <br /> Where every page is a journey and every stroke sparks your creativity." ✨
           </motion.p>
           <motion.div
             initial={{ y: "100px", opacity: 0 }}
@@ -43,9 +41,9 @@ const Header = () => {
           >
             <Link
               href="/shop"
-              className="w-full md:w-52 mb-5 md:mb-12 inline-block text-center bg-black hover:bg-black/80 transition-all text-white px-14 py-4 rounded-full hover:animate-pulse"
+              className="w-full md:w-52 mb-5 md:mb-12 inline-block text-center bg-pink hover:bg-black/80 transition-all text-white px-13 py-4 rounded-full hover:animate-pulse"
             >
-              Shop Now
+              Discover Now
             </Link>
           </motion.div>
           <motion.div
@@ -102,7 +100,7 @@ const Header = () => {
             height={104}
             width={104}
             alt="big star"
-            className="absolute right-7 xl:right-0 top-12 max-w-[76px] max-h-[76px] lg:max-w-24 lg:max-h-max-w-24 xl:max-w-[104px] xl:max-h-[104px] animate-[spin_4s_infinite]"
+            className="absolute right-7 xl:right-0 top-100 max-w-[76px] max-h-[76px] lg:max-w-24 lg:max-h-max-w-24 xl:max-w-[104px] xl:max-h-[104px] animate-[spin_4s_infinite]"
           />
           <Image
             priority

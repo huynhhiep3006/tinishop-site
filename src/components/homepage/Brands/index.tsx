@@ -3,40 +3,40 @@ import React from "react";
 
 const brandsData: { id: string; srcUrl: string }[] = [
   {
-    id: "versace",
-    srcUrl: "/icons/versace-logo.svg",
+    id: "Cozy",
+    srcUrl: "/icons/cozy.png",
   },
   {
-    id: "zara",
-    srcUrl: "/icons/zara-logo.svg",
+    id: "Christmas",
+    srcUrl: "/icons/Christmas.png",
   },
   {
-    id: "gucci",
-    srcUrl: "/icons/gucci-logo.svg",
+    id: "Halloween",
+    srcUrl: "/icons/Halloween.png",
   },
   {
-    id: "prada",
-    srcUrl: "/icons/prada-logo.svg",
+    id: "Carnival",
+    srcUrl: "/icons/Carnival.png",
   },
   {
-    id: "calvin-klein",
-    srcUrl: "/icons/calvin-klein-logo.svg",
+    id: "Best Seller",
+    srcUrl: "/icons/Best Seller.png",
   },
 ];
 
 const Brands = () => {
   return (
-    <div className="bg-black">
+    <div className="bg-cream">
       <div className="max-w-frame mx-auto flex flex-wrap items-center justify-center md:justify-between py-5 md:py-0 sm:px-4 xl:px-0 space-x-7">
         {brandsData.map((brand) => (
           <Image
             key={brand.id}
             priority
             src={brand.srcUrl}
-            height={0}
-            width={0}
+            height={200}
+            width={200}
             alt={brand.id}
-            className="h-auto w-auto max-w-[116px] lg:max-w-48 max-h-[26px] lg:max-h-9 my-5 md:my-11"
+            className="h-auto w-auto max-w-[200px] lg:max-w-48 max-h-[200px] lg:max-h-90 my-5 md:my-0"
           />
         ))}
       </div>

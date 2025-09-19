@@ -1,29 +1,29 @@
 "use client";
 
-import { Product } from "@/types/product.types";
+import { ProductFull } from "@/types/product.types";
 import Image from "next/image";
 import React, { useState } from "react";
 
-const PhotoSection = ({ data }: { data: Product }) => {
-  const [selected, setSelected] = useState<string>(data.srcUrl);
+const PhotoSection = ({ data }: { data: ProductFull }) => {
+  const [selected, setSelected] = useState<string>(data.images[0].src);
 
   return (
     <div className="flex flex-col-reverse lg:flex-row lg:space-x-3.5">
-      {data?.gallery && data.gallery.length > 0 && (
+      {data?.images && data.images.length > 0 && (
         <div className="flex lg:flex-col space-x-3 lg:space-x-0 lg:space-y-3.5 w-full lg:w-fit items-center lg:justify-start justify-center">
-          {data.gallery.map((photo, index) => (
+          {data.images.slice(0, 3).map((photo, index) => (
             <button
               key={index}
               type="button"
               className="bg-[#F0EEED] rounded-[13px] xl:rounded-[20px] w-full max-w-[111px] xl:max-w-[152px] max-h-[106px] xl:max-h-[167px] xl:min-h-[167px] aspect-square overflow-hidden"
-              onClick={() => setSelected(photo)}
+              onClick={() => setSelected(photo.src)}
             >
               <Image
-                src={photo}
+                src={photo.src}
                 width={152}
                 height={167}
                 className="rounded-md w-full h-full object-cover hover:scale-110 transition-all duration-500"
-                alt={data.title}
+                alt={data.images[0].alt}
                 priority
               />
             </button>
@@ -37,7 +37,7 @@ const PhotoSection = ({ data }: { data: Product }) => {
           width={444}
           height={530}
           className="rounded-md w-full h-full object-cover hover:scale-110 transition-all duration-500"
-          alt={data.title}
+          alt={data.images[0].alt}
           priority
           unoptimized
         />

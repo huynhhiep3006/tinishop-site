@@ -1,14 +1,18 @@
 import React from "react";
 import PhotoSection from "./PhotoSection";
-import { Product } from "@/types/product.types";
-import { integralCF } from "@/styles/fonts";
+import { ProductFull } from "@/types/product.types";
+import { josefinsans } from "@/styles/fonts";
 import { cn } from "@/lib/utils";
 import Rating from "@/components/ui/Rating";
 import ColorSelection from "./ColorSelection";
 import SizeSelection from "./SizeSelection";
 import AddToCardSection from "./AddToCardSection";
-
-const Header = ({ data }: { data: Product }) => {
+import { useAppSelector } from "@/lib/hooks/redux";
+const Header = ({ data }: { data: ProductFull }) => {
+  console.log(data);
+    const { sizeSelection, price } = useAppSelector(
+    (state) => state.products
+  );  // Lấy giá và lựa chọn từ Redux store
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -18,15 +22,15 @@ const Header = ({ data }: { data: Product }) => {
         <div>
           <h1
             className={cn([
-              integralCF.className,
+              josefinsans.className,
               "text-2xl md:text-[40px] md:leading-[40px] mb-3 md:mb-3.5 capitalize",
             ])}
           >
-            {data.title}
+            {data.name}
           </h1>
           <div className="flex items-center mb-3 sm:mb-3.5">
             <Rating
-              initialValue={data.rating}
+              initialValue={Number(data.average_rating)}
               allowFraction
               SVGclassName="inline-block"
               emptyClassName="fill-gray-50"
@@ -34,55 +38,53 @@ const Header = ({ data }: { data: Product }) => {
               readonly
             />
             <span className="text-black text-xs sm:text-sm ml-[11px] sm:ml-[13px] pb-0.5 sm:pb-0">
-              {data.rating.toFixed(1)}
+              {Number(data.average_rating).toFixed(1)}
               <span className="text-black/60">/5</span>
             </span>
           </div>
           <div className="flex items-center space-x-2.5 sm:space-x-3 mb-5">
-            {data.discount.percentage > 0 ? (
+            {Number(data.sale_price) > 0 ? (
               <span className="font-bold text-black text-2xl sm:text-[32px]">
-                {`$${Math.round(
-                  data.price - (data.price * data.discount.percentage) / 100
-                )}`}
+                ${Number(data.price)}
               </span>
-            ) : data.discount.amount > 0 ? (
+            ) : Number(data.sale_price) > 0 ? (
               <span className="font-bold text-black text-2xl sm:text-[32px]">
-                {`$${data.price - data.discount.amount}`}
+                {`$${Number(data.price) - Number(data.sale_price)}`}
               </span>
             ) : (
               <span className="font-bold text-black text-2xl sm:text-[32px]">
-                ${data.price}
+                ${Number(data.regular_price)*price}
               </span>
             )}
-            {data.discount.percentage > 0 && (
+            {Number(data.price) > 0 && (
+              <span className="font-bold text-black/40 line-through text-2xl sm:text-[32px]">
+                ${Number(data.regular_price)*price}
+              </span>
+            )}
+            {/* {Number(data.price) > 0 && (
               <span className="font-bold text-black/40 line-through text-2xl sm:text-[32px]">
                 ${data.price}
               </span>
-            )}
-            {data.discount.amount > 0 && (
-              <span className="font-bold text-black/40 line-through text-2xl sm:text-[32px]">
-                ${data.price}
-              </span>
-            )}
-            {data.discount.percentage > 0 ? (
+            )} */}
+            {Number(data.price) > 0 ? (
               <span className="font-medium text-[10px] sm:text-xs py-1.5 px-3.5 rounded-full bg-[#FF3333]/10 text-[#FF3333]">
-                {`-${data.discount.percentage}%`}
+                {`-${100 - ((Number(data.price) * 100) / Number(data.regular_price))}%`}
               </span>
             ) : (
-              data.discount.amount > 0 && (
+              Number(data.price) > 0 && (
                 <span className="font-medium text-[10px] sm:text-xs py-1.5 px-3.5 rounded-full bg-[#FF3333]/10 text-[#FF3333]">
-                  {`-$${data.discount.amount}`}
+                  {`-$${Number(data.price)}`}
                 </span>
               )
             )}
           </div>
-          <p className="text-sm sm:text-base text-black/60 mb-5">
-            This graphic t-shirt which is perfect for any occasion. Crafted from
-            a soft and breathable fabric, it offers superior comfort and style.
-          </p>
+          <div
+            className="text-sm sm:text-base text-black/60 mb-5"
+            dangerouslySetInnerHTML={{ __html: data.short_description }}
+          />
           <hr className="h-[1px] border-t-black/10 mb-5" />
-          <ColorSelection />
-          <hr className="h-[1px] border-t-black/10 my-5" />
+          {/* <ColorSelection /><hr className="h-[1px] border-t-black/10 my-5" /> */}
+          
           <SizeSelection />
           <hr className="hidden md:block h-[1px] border-t-black/10 my-5" />
           <AddToCardSection data={data} />

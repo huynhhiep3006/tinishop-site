@@ -5,7 +5,7 @@ import ProductCard from "@/components/cart-page/ProductCard";
 import { Button } from "@/components/ui/button";
 import InputGroup from "@/components/ui/input-group";
 import { cn } from "@/lib/utils";
-import { integralCF } from "@/styles/fonts";
+import { josefinsans } from "@/styles/fonts";
 import { FaArrowRight } from "react-icons/fa6";
 import { MdOutlineLocalOffer } from "react-icons/md";
 import { TbBasketExclamation } from "react-icons/tb";
@@ -13,7 +13,6 @@ import React from "react";
 import { RootState } from "@/lib/store";
 import { useAppSelector } from "@/lib/hooks/redux";
 import Link from "next/link";
-
 export default function CartPage() {
   const { cart, totalPrice, adjustedTotalPrice } = useAppSelector(
     (state: RootState) => state.carts
@@ -27,7 +26,7 @@ export default function CartPage() {
             <BreadcrumbCart />
             <h2
               className={cn([
-                integralCF.className,
+                josefinsans.className,
                 "font-bold text-[32px] md:text-[40px] text-black uppercase mb-5 md:mb-6",
               ])}
             >
@@ -51,7 +50,7 @@ export default function CartPage() {
                 <div className="flex flex-col space-y-5">
                   <div className="flex items-center justify-between">
                     <span className="md:text-xl text-black/60">Subtotal</span>
-                    <span className="md:text-xl font-bold">${totalPrice}</span>
+                    <span className="md:text-xl font-bold">${totalPrice.toFixed(2)}</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="md:text-xl text-black/60">
@@ -93,17 +92,19 @@ export default function CartPage() {
                   </InputGroup>
                   <Button
                     type="button"
-                    className="bg-black rounded-full w-full max-w-[119px] h-[48px]"
+                    className="bg-pink rounded-full w-full max-w-[119px] h-[48px]"
                   >
                     Apply
                   </Button>
                 </div>
                 <Button
                   type="button"
-                  className="text-sm md:text-base font-medium bg-black rounded-full w-full py-4 h-[54px] md:h-[60px] group"
+                  className="text-sm md:text-base font-medium bg-pink rounded-full w-full py-4 h-[54px] md:h-[60px] group"
                 >
-                  Go to Checkout{" "}
-                  <FaArrowRight className="text-xl ml-2 group-hover:translate-x-1 transition-all" />
+                  <Link href="/checkout" className={"inline-flex"}>
+                    Go to Checkout{" "}
+                    <FaArrowRight className="text-xl ml-2 group-hover:translate-x-1 transition-all" />
+                  </Link>
                 </Button>
               </div>
             </div>

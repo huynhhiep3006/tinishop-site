@@ -10,6 +10,7 @@ export type Color = {
 interface ProductsState {
   colorSelection: Color;
   sizeSelection: string;
+  price: any;
 }
 
 // Define the initial state using that type
@@ -18,7 +19,8 @@ const initialState: ProductsState = {
     name: "Brown",
     code: "bg-[#4F4631]",
   },
-  sizeSelection: "Large",
+  sizeSelection: "Digital",
+  price: 1,
 };
 
 export const productsSlice = createSlice({
@@ -31,6 +33,11 @@ export const productsSlice = createSlice({
     },
     setSizeSelection: (state, action: PayloadAction<string>) => {
       state.sizeSelection = action.payload;
+      if (action.payload === "Digital") {
+        state.price = 1;  // Giá cho sách điện tử
+      } else if (action.payload === "Physical Books") {
+        state.price = 3;  // Giá cho sách vật lý
+      }
     },
   },
 });

@@ -1,0 +1,61 @@
+{
+  "id": 71962,
+  "name": "Girl moments coloring book",
+  "slug": "girl-moments-coloring-book",
+  "permalink": "https://muasamngay.com/product/girl-moments-coloring-book/",
+  "date_created": "2025-08-04T00:59:04",
+  "date_modified": "2025-08-04T08:38:22",
+  "type": "simple",
+  "status": "publish",
+  "featured": false,
+  "catalog_visibility": "visible",
+  "description": "<p>💕 Girl Moments Coloring Book – For Every “Why Me?!” Moment You’ll Laugh About Later<br />\nThe Girl Moments Coloring Book is a fun, relatable, and slightly chaotic journey through the everyday experiences every girl knows all too well...</p>",
+  "short_description": "<p>Take your time or dive right in. Whether you’re exploring new techniques or simply enjoying the creative flow, we hope this book brings you calm, joy, and a little spark of creativity anytime you need it.</p>",
+  "sku": "",
+  "price": "24.99",
+  "regular_price": "100",
+  "sale_price": "24.99",
+  "on_sale": true,
+  "purchasable": true,
+  "total_sales": 2,
+  "virtual": false,
+  "downloadable": true,
+  "downloads": [
+    {
+      "id": "9032919a-0ff9-493d-9a65-7194677cc583",
+      "name": "1-runner-oversized-t-shirt-48652-9e5elqyem6.png",
+      "file": "http://muasamngay.com/wp-content/uploads/2025/05/1-runner-oversized-t-shirt-48652-9e5elqyem6.png"
+    }
+  ],
+  "download_limit": 1,
+  "download_expiry": -1,
+  "stock_status": "instock",
+  "manage_stock": false,
+  "weight": "",
+  "dimensions": {
+    "length": "",
+    "width": "",
+    "height": ""
+  },
+  "shipping_required": true,
+  "shipping_taxable": true,
+  "reviews_allowed": true,
+  "average_rating": "5.00",
+  "rating_count": 1,
+  "categories": [
+    {
+      "id": 15,
+      "name": "Thời Trang Nam",
+      "slug": "thoi-trang-nam"
+    }
+  ],
+  "images": [
+    {
+      "id": 71964,
+      "src": "http://muasamngay.com/wp-content/uploads/2025/08/85.png",
+      "name": "85",
+      "alt": ""
+    }
+  ],
+  "price_html": "<del><span>100 ₫</span></del> <ins><span>25 ₫</span></ins>"
+}

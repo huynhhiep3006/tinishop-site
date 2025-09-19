@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { integralCF } from "@/styles/fonts";
+import { josefinsans } from "@/styles/fonts";
 import React from "react";
 import { PaymentBadge, SocialNetworks } from "./footer.types";
 import { FaFacebookF, FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
@@ -8,7 +8,7 @@ import LinksSection from "./LinksSection";
 import Image from "next/image";
 import NewsLetterSection from "./NewsLetterSection";
 import LayoutSpacing from "./LayoutSpacing";
-
+import { SHOP_NAME } from '@/lib/constants';
 const socialsData: SocialNetworks[] = [
   {
     id: 1,
@@ -70,11 +70,11 @@ const Footer = () => {
             <div className="flex flex-col lg:col-span-3 lg:max-w-[248px]">
               <h1
                 className={cn([
-                  integralCF.className,
+                  josefinsans.className,
                   "text-[28px] lg:text-[32px] mb-6",
                 ])}
               >
-                SHOP.CO
+                { SHOP_NAME }
               </h1>
               <p className="text-black/60 text-sm mb-9">
                 We have clothes that suits your style and which you’re proud to
@@ -85,7 +85,7 @@ const Footer = () => {
                   <Link
                     href={social.url}
                     key={social.id}
-                    className="bg-white hover:bg-black hover:text-white transition-all mr-3 w-7 h-7 rounded-full border border-black/20 flex items-center justify-center p-1.5"
+                    className="bg-white hover:bg-pink hover:text-white transition-all mr-3 w-7 h-7 rounded-full border border-black/20 flex items-center justify-center p-1.5"
                   >
                     {social.icon}
                   </Link>
@@ -103,20 +103,20 @@ const Footer = () => {
           <hr className="h-[1px] border-t-black/10 mb-6" />
           <div className="flex flex-col sm:flex-row justify-center sm:justify-between items-center mb-2">
             <p className="text-sm text-center sm:text-left text-black/60 mb-4 sm:mb-0 sm:mr-1">
-              Shop.co © Made by{" "}
+              © Copyright{" "}
               <Link
-                href="https://github.com/mohammadoftadeh"
+                href="https://github.com/mohammadoftadeh/next-ecommerce-shopco"
                 className="text-black font-medium"
               >
-                Mohammad Oftadeh
+                Shopco
               </Link>
               {", "}
-              Designed by{" "}
+              Cutsom by{" "}
               <Link
-                href="https://www.figma.com/@hamzauix"
+                href=""
                 className="text-black font-medium"
               >
-                Hamza Naeem
+                HTH
               </Link>
             </p>
             <div className="flex items-center">

@@ -32,6 +32,7 @@ const ColorsSection = () => {
               "bg-pink-600",
               "bg-white",
               "bg-black",
+              "bg-pink",
             ].map((color, index) => (
               <button
                 key={index}
